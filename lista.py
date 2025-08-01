@@ -1,2 +1,5 @@
 afazeres = []
-item = input("Deseja adicionar um item a sua lista? ").upper
+adicionar = input("Deseja adicionar um item a sua lista? ").upper
+if adicionar == "SIM":
+    item = input("Qual item você deseja adicionar? ")
+    
