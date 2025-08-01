@@ -1,4 +1,5 @@
 afazeres = []
+i = 0
 
 while True:
 
@@ -16,27 +17,34 @@ while True:
     """)
 
     acao = int(input("O que você deseja fazer? "))
-
+    
     if acao == 1:
         item = input("O que você deseja adicionar? ").upper()
         afazeres.append(item)
 
     elif acao == 2:
-        item = input("O que você deseja retirar? ").upper()
+        for tarefa in afazeres:
+            print(tarefa)
+        item = input("Qual o índice do item que você deseja retirar? ").upper()
         afazeres.remove(item)
 
     elif acao == 3:
-        concluir = input("Qual item você deseja marcar como conlcluído? ").upper()
-        for item in afazeres:
-            if item == concluir:
-                print(*f"{item} ✓")
+        i = 0
+        for tarefa in afazeres:
+            print(f"{i} {tarefa}")
+        concluir = int(input("Qual o índice do item que você deseja marcar como conlcluído? "))
+        afazeres[concluir] = afazeres[concluir] + " ✓"
+        print("Concluído!")
 
-    elif acao == 4: 
-        for item in afazeres:
-            print(*item)
+    elif acao == 4:
+        if not afazeres:
+            print("A sua lista está vazia!")
+        for tarefa in afazeres:
+            print(tarefa)
     
     elif acao == 0:
+        print("Até mais!")
         break
 
     else:
-        acao = input("O que você deseja fazer? ")
+        acao = print("Opção inválida!")
