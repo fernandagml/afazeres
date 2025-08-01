@@ -1,5 +1,7 @@
 afazeres = []
-i = 0
+
+print("""\nBem vindo! Esta é a sua lista de afazeres,
+      escolha a opção abaixo que deseja executar!\n""")
 
 while True:
 
@@ -15,36 +17,58 @@ while True:
             *   0 - SAIR                      *
             ___________________________________
     """)
+    
+    try:
+        acao = int(input("O que você deseja fazer agora? "))
 
-    acao = int(input("O que você deseja fazer? "))
+    except ValueError:
+        print("\nOpção inválida! Tente Novamente.")
+        continue
     
     if acao == 1:
-        item = input("O que você deseja adicionar? ").upper()
+        item = input("\nO que você deseja adicionar na sua lista? ").upper()
         afazeres.append(item)
+        print("Adicionado!")
 
     elif acao == 2:
-        for tarefa in afazeres:
-            print(tarefa)
-        item = input("Qual o índice do item que você deseja retirar? ").upper()
-        afazeres.remove(item)
+        if not afazeres:
+            print("\nA sua lista está vazia!")
+        else:
+            print("\nDê uma olhada na lista:")
+            i = 0
+            for tarefa in afazeres:
+                print(f"{i} {tarefa}")
+                i += 1
+            item = int(input("\nQual item você deseja retirar? "))
+            afazeres.pop(item)
+            print("Retirado!")
 
     elif acao == 3:
-        i = 0
-        for tarefa in afazeres:
-            print(f"{i} {tarefa}")
-        concluir = int(input("Qual o índice do item que você deseja marcar como conlcluído? "))
-        afazeres[concluir] = afazeres[concluir] + " ✓"
-        print("Concluído!")
+        if not afazeres:
+            print("\nA sua lista está vazia!")
+        else:
+            print("\nDê uma olhada na lista:")
+            i = 0
+            for tarefa in afazeres:
+                print(f"{i} {tarefa}")
+                i += 1
+            concluir = int(input("\nQual o índice do item que você deseja marcar como conlcluído? "))
+            afazeres[concluir] = afazeres[concluir] + " ✓"
+            print("Concluído!")
 
     elif acao == 4:
         if not afazeres:
-            print("A sua lista está vazia!")
+            print("\nA sua lista está vazia!")
+        else:
+            print("\nDê uma olhada na lista:")
+        i = 0
         for tarefa in afazeres:
-            print(tarefa)
-    
+            print(f"{i} {tarefa}")
+            i += 1
+
     elif acao == 0:
         print("Até mais!")
         break
 
     else:
-        acao = print("Opção inválida!")
+        print("\nOpção inválida! Tente Novamente.")
