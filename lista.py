@@ -1,4 +1,7 @@
 afazeres = []
+with open('banco_dados.txt', 'r') as arquivo:
+    for tarefa in arquivo:
+        afazeres.append(tarefa.strip())
 
 print("""\nBem vindo! Esta é a sua lista de afazeres,
       escolha a opção abaixo que deseja executar!\n""")
@@ -40,7 +43,7 @@ while True:
                 print(f"{i} {tarefa}")
                 i += 1
             item = int(input("\nQual item você deseja retirar? "))
-            afazeres.pop(item)
+            afazeres.remove(item)
             print("Retirado!")
 
     elif acao == 3:
@@ -68,6 +71,9 @@ while True:
 
     elif acao == 0:
         print("Até mais!")
+        with open('banco_dados.txt', 'w') as arquivo:
+            for tarefa in afazeres:
+                arquivo.write(tarefa + "\n")
         break
 
     else:
