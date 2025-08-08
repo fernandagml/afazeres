@@ -73,7 +73,7 @@ while True:
         print("Até mais!")
         with open('banco_dados.txt', 'w') as arquivo:
             for tarefa in afazeres:
-                arquivo.write(tarefa + "\n")
+                arquivo.write(f"{tarefa}\n")
         break
 
     else:
